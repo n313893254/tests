@@ -42,6 +42,8 @@ export default defineConfig({
     overwrite: false,
     html: false,
     json: true,
+    reportPageTitle: 'Harvester test report',
+    inlineAssets: true,
   },
   e2e: {
     // We've imported your old cypress plugins here.

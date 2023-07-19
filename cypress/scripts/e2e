@@ -15,8 +15,8 @@ report_dir="cypress/results/${timestamp}-${commit_id}"
 
 mkdir -p ${report_dir}
 
-./node_modules/.bin/mochawesome-merge 'cypress/results/*.json' > cypress/results/merge/mochawesome.json 
-./node_modules/.bin/marge cypress/results/merge/mochawesome.json -o ${report_dir} -f index.html
+./node_modules/.bin/mochawesome-merge 'cypress/results/*.json' > cypress/results/merge.json 
+./node_modules/.bin/marge cypress/results/merge.json -o ${report_dir} -f index.html
 
 minio_dir="cypress-test-report/cypress/results/"
 minio_name="minio"

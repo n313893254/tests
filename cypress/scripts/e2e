@@ -9,14 +9,15 @@ if [ $? -ne 0 ]; then
 fi
 
 timestamp=$(date +%Y%m%d-%H%M%S)
-commit_id=$(git rev-parse --short HEAD)
+# commit_id=$(git rev-parse --short HEAD)
 
-report_dir="cypress/results/${timestamp}-${commit_id}"
+report_dir="cypress/results/${timestamp}"
+# report_dir="cypress/results/${timestamp}-${commit_id}"
 
 mkdir -p ${report_dir}
 
-./node_modules/.bin/mochawesome-merge 'cypress/results/*.json' > cypress/results/merge.json 
-./node_modules/.bin/marge cypress/results/merge.json -o ${report_dir} -f index.html
+./node_modules/.bin/mochawesome-merge 'cypress/results/*.json' > ${report_dir}/merge.json 
+./node_modules/.bin/marge ${report_dir}/merge.json -o ${report_dir} -f index.html
 
 minio_dir="cypress-test-report/cypress/results/"
 minio_name="minio"
